@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Inventory</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="all">All</string>
+    <string name="cereals_seeds">Cereals seeds</string>
+    <string name="equipments">Equipments</string>
+    <string name="minerals">Minerals</string>
+    <string name="add_to_inventory">Add to Inventory</string>
+    <string name="create_new">Create new</string>
+</resources>
