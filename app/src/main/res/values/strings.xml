@@ -8,4 +8,5 @@
     <string name="minerals">Minerals</string>
     <string name="add_to_inventory">Add to Inventory</string>
     <string name="create_new">Create new</string>
+    <string name="search_by">Search by name manufacturer code</string>
 </resources>
