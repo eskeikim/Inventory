@@ -7,9 +7,10 @@
         <entry key="..\:/projects/research/ek/inventory/app/src/main/res/drawable/edittext_bg.xml" value="0.165625" />
         <entry key="..\:/projects/research/ek/inventory/app/src/main/res/drawable/rounded_corner_bottom_sheet.xml" value="0.140625" />
         <entry key="..\:/projects/research/ek/inventory/app/src/main/res/font/eczar.xml" value="0.15104166666666666" />
-        <entry key="..\:/projects/research/ek/inventory/app/src/main/res/layout/activity_main.xml" value="0.21" />
-        <entry key="..\:/projects/research/ek/inventory/app/src/main/res/layout/add_product.xml" value="0.21637426900584794" />
-        <entry key="..\:/projects/research/ek/inventory/app/src/main/res/layout/fragment_main.xml" value="0.14739583333333334" />
+        <entry key="..\:/projects/research/ek/inventory/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/projects/research/ek/inventory/app/src/main/res/layout/add_product.xml" value="0.18" />
+        <entry key="..\:/projects/research/ek/inventory/app/src/main/res/layout/fragment_main.xml" value="0.22" />
+        <entry key="..\:/projects/research/ek/inventory/app/src/main/res/layout/products_item_list.xml" value="0.25" />
       </map>
     </option>
   </component>

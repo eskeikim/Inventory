@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
+import com.skimani.inventory.adapter.SectionsPagerAdapter
 import com.skimani.inventory.databinding.ActivityMainBinding
 import com.skimani.inventory.ui.main.AddProductDialog
-import com.skimani.inventory.ui.main.SectionsPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,6 +34,5 @@ class MainActivity : AppCompatActivity() {
         binding.createNew.setOnClickListener { view ->
             AddProductDialog.newInstance().show(supportFragmentManager, "dialog")
         }
-
     }
 }

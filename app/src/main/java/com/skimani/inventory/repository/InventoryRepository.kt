@@ -10,6 +10,9 @@ class InventoryRepository @Inject constructor(private  val inventoryDao: Invento
     fun fetchAllProducts(): LiveData<List<Products>>{
         return inventoryDao.fetchAllProducts()
     }
+    fun filteredProducts(name:String): LiveData<List<Products>>{
+        return inventoryDao.filteredProducts(name)
+    }
     suspend fun addProducts(product: Products){
         inventoryDao.addProducts(product)
     }

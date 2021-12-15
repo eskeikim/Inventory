@@ -11,4 +11,13 @@
     <string name="search_by">Search by name manufacturer code</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="category">Category</string>
+    <string name="vegetables">Vegetables</string>
+
+    <string-array name="category">
+        <item> Cereal seeds</item>
+        <item> Equipments</item>
+        <item> Minerals</item>
+        <item> Vegetables</item>
+    </string-array>
 </resources>

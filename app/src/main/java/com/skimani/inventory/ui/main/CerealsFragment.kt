@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.skimani.inventory.adapter.InventoryAdapter
 import com.skimani.inventory.data.entities.Products
 import com.skimani.inventory.databinding.FragmentMainBinding
-import com.skimani.inventory.ui.viewmodel.PageViewModel
 import com.skimani.inventory.ui.viewmodel.ProductsViewmodel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -19,11 +17,11 @@ import timber.log.Timber
  * A placeholder fragment containing a simple view.
  */
 @AndroidEntryPoint
-class AllProductsFragment : Fragment() {
+class CerealsFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private lateinit var inventoryAdapter: InventoryAdapter
-    private val productList = ArrayList<Products>()
+    private val vegList = ArrayList<Products>()
     private val productsViewmodel: ProductsViewmodel by viewModels()
 
     // This property is only valid between onCreateView and
@@ -39,9 +37,10 @@ class AllProductsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root = binding.root
+        initViews()
+        setupObservers()
         return root
     }
 
@@ -52,15 +51,15 @@ class AllProductsFragment : Fragment() {
     private fun initAdapter() {
         inventoryAdapter = InventoryAdapter()
         binding.productsRV.adapter = inventoryAdapter
-        inventoryAdapter.submitList(productList)
+        inventoryAdapter.submitList(vegList)
     }
 
     private fun setupObservers() {
-        productsViewmodel.allProducts.observe(viewLifecycleOwner, {
+        productsViewmodel.filteredProducts("cereals").observe(viewLifecycleOwner, {
             Timber.d("Item count ${it.size}")
             if (it != null) {
-                productList.clear()
-                productList.addAll(it.toMutableList())
+                vegList.clear()
+                vegList.addAll(it.toMutableList())
                 inventoryAdapter.notifyDataSetChanged()
             }
         })
@@ -84,8 +83,8 @@ class AllProductsFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): AllProductsFragment {
-            return AllProductsFragment().apply {
+        fun newInstance(sectionNumber: Int): CerealsFragment {
+            return CerealsFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

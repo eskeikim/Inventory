@@ -14,8 +14,14 @@ class ProductsViewmodel @Inject constructor(private val repository: InventoryRep
     val allProducts: LiveData<List<Products>>
         get() = fetchAllProducts()
 
+    fun filteredProducts(name: String): LiveData<List<Products>> = filteredProduct(name)
+
     fun fetchAllProducts(): LiveData<List<Products>> {
         return repository.fetchAllProducts()
+    }
+
+    fun filteredProduct(name: String): LiveData<List<Products>> {
+        return repository.filteredProducts(name)
     }
 
     fun addProducts(product: Products) {
