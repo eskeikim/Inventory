@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.skimani.inventory.data.entities.Products
 import com.skimani.inventory.databinding.FragmentMainBinding
 import com.skimani.inventory.ui.viewmodel.PageViewModel
 import com.skimani.inventory.ui.viewmodel.ProductsViewmodel
@@ -49,25 +48,10 @@ class AllProductsFragment : Fragment() {
     }
 
     private fun initViews() {
-        saveProduct()
+        initAdapter()
     }
 
-    private fun saveProduct() {
-        val product= Products(
-            "Rice",
-            30002,
-            "Cereals",
-            "None",
-            "Mwea Rice",
-            "Mwea Distributors",
-            "12000",
-            "18000",
-            "3000",
-            "7000",
-            ""
-        )
-        productsViewmodel.addProducts(product)
-    }
+    private fun initAdapter() {}
 
     private fun setupObservers() {
         pageViewModel.text.observe(

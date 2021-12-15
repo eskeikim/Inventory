@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "products")
 data class Products(
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "code") val code: Long,
+    @ColumnInfo(name = "code") val code: String,
     @ColumnInfo(name = "category") val category: String,
     @ColumnInfo(name = "type") val type: String,
     @ColumnInfo(name = "manufacturer") val manufacturer: String,

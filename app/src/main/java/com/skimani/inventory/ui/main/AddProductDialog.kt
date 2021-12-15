@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.skimani.inventory.data.entities.Products
 import com.skimani.inventory.databinding.AddProductBinding
 import com.skimani.inventory.ui.viewmodel.ProductsViewmodel
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +34,102 @@ class AddProductDialog : CustomRoundedBottomSheet() {
         binding.closeBtn.setOnClickListener {
             dismiss()
         }
+
+        binding.cancelBtn.setOnClickListener {
+            dismiss()
+        }
+//        binding.saveBtn.isEnabled = false
+//        binding.saveBtn.alpha = 0.3F
+        binding.saveBtn.setOnClickListener {
+            val name = binding.etName.text.toString().trim()
+            var code = binding.etCode.text.toString().trim()
+            val category = binding.etCategory.text.toString().trim()
+            val type = binding.etType.text.toString().trim()
+            val manufacturer = binding.etManufacturer.text.toString().trim()
+            val distributor = binding.etDistributor.text.toString().trim()
+            val cost = binding.etCost.text.toString().trim()
+            val retailPrice = binding.etRetailPrice.text.toString().trim()
+            val agentPrice = binding.etAgentPrice.text.toString().trim()
+            val wholesalePrice = binding.etWholesalePrice.text.toString().trim()
+            val imagePath = "image"
+            if (validateFields(
+                    name,
+                    code,
+                    category,
+                    type,
+                    manufacturer,
+                    distributor,
+                    cost,
+                    retailPrice,
+                    agentPrice,
+                    wholesalePrice
+                )
+            ) {
+                binding.saveBtn.isEnabled = true
+                binding.saveBtn.alpha = 0.3F
+                saveProduct(
+                    name,
+                    code,
+                    category,
+                    type,
+                    manufacturer,
+                    distributor,
+                    cost,
+                    retailPrice,
+                    agentPrice,
+                    wholesalePrice,
+                    imagePath
+                )
+                dismiss()
+            }
+        }
+    }
+
+    private fun saveProduct(
+        name: String,
+        code: String,
+        category: String,
+        type: String,
+        manufacture: String,
+        distributor: String,
+        cost: String,
+        retailPrice: String,
+        agentPrice: String,
+        wholesalePrice: String,
+        imagePath: String
+    ) {
+        val product = Products(
+            name,
+            code,
+            category,
+            type,
+            manufacture,
+            distributor,
+            cost,
+            retailPrice,
+            agentPrice,
+            wholesalePrice,
+            imagePath
+        )
+        productsViewmodel.addProducts(product)
+    }
+
+    private fun validateFields(
+        name: String,
+        code: String,
+        category: String,
+        type: String,
+        manufacturer: String,
+        distributor: String,
+        cost: String,
+        retailPrice: String,
+        agentPrice: String,
+        wholesalePrice: String
+    ): Boolean {
+        return !(
+            name.isEmpty() || code.toString()
+                .isEmpty() || category.isEmpty() || type.isEmpty() || manufacturer.isEmpty() || distributor.isEmpty() || cost.isEmpty() || retailPrice.isEmpty() || agentPrice.isEmpty() || wholesalePrice.isEmpty()
+            )
     }
 
     companion object {

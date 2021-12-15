@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -19,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_8sdp">
 
         <TextView
@@ -47,9 +55,147 @@
         style="@style/TextViewHintStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_16sdp"
         android:gravity="center"
-        android:text="Contacts" />
+        android:text="Product name" />
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+       <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Product code" />
+    <EditText
+        android:id="@+id/etCode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+       <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Category" />
+    <EditText
+        android:id="@+id/etCategory"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+       <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Product type" />
+    <EditText
+        android:id="@+id/etType"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+       <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Manufacturer" />
+    <EditText
+        android:id="@+id/etManufacturer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+       <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Distributor" />
+    <EditText
+        android:id="@+id/etDistributor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+       <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Unit cost" />
+    <EditText
+        android:id="@+id/etCost"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+       <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Retail price" />
+    <EditText
+        android:id="@+id/etRetailPrice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+       <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Agent price" />
+    <EditText
+        android:id="@+id/etAgentPrice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+
+
+     <TextView
+        style="@style/TextViewHintStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Wholesale price" />
+    <EditText
+        android:id="@+id/etWholesalePrice"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        style="@style/EditTextStyle"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginVertical="@dimen/activity_horizontal_margin"
+        >
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/accent"
+            android:text="@string/cancel"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/accent"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:text="@string/save"/>
+
+    </LinearLayout>
 
 </LinearLayout>
+</androidx.core.widget.NestedScrollView>

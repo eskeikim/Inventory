@@ -30,5 +30,6 @@
     <dimen name="_2sdp">2dp</dimen>
     <dimen name="_4sdp">4dp</dimen>
     <dimen name="_32sdp">32dp</dimen>
+    <dimen name="_40sdp">40dp</dimen>
 
 </resources>

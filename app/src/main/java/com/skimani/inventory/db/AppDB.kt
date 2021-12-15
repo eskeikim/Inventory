@@ -20,6 +20,7 @@ abstract class AppDB : RoomDatabase() {
 
         private fun buildDatabase(context: Context): AppDB =
             Room.databaseBuilder(context, AppDB::class.java, "inventorydb")
+                .fallbackToDestructiveMigration()
                 .build()
     }
 }
