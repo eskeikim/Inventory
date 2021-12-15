@@ -4,20 +4,25 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.skimani.inventory.data.entities.Products
 import com.skimani.inventory.databinding.FragmentMainBinding
+import com.skimani.inventory.ui.viewmodel.PageViewModel
+import com.skimani.inventory.ui.viewmodel.ProductsViewmodel
+import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 /**
  * A placeholder fragment containing a simple view.
  */
-class PlaceholderFragment : Fragment() {
+@AndroidEntryPoint
+class AllProductsFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
     private var _binding: FragmentMainBinding? = null
-
+    private val productsViewmodel: ProductsViewmodel by viewModels()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -37,15 +42,44 @@ class PlaceholderFragment : Fragment() {
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root = binding.root
+        initViews()
 
-        val textView: TextView = binding.sectionLabel
+        setupObservers()
+        return root
+    }
+
+    private fun initViews() {
+        saveProduct()
+    }
+
+    private fun saveProduct() {
+        val product= Products(
+            "Rice",
+            30002,
+            "Cereals",
+            "None",
+            "Mwea Rice",
+            "Mwea Distributors",
+            "12000",
+            "18000",
+            "3000",
+            "7000",
+            ""
+        )
+        productsViewmodel.addProducts(product)
+    }
+
+    private fun setupObservers() {
         pageViewModel.text.observe(
             viewLifecycleOwner,
-            Observer {
-                textView.text = it
+            {
+                binding.sectionLabel.text = it
             }
         )
-        return root
+
+        productsViewmodel.allProducts.observe(viewLifecycleOwner, {
+            Timber.d("Item count ${it.size}")
+        })
     }
 
     companion object {
@@ -60,8 +94,8 @@ class PlaceholderFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
+        fun newInstance(sectionNumber: Int): AllProductsFragment {
+            return AllProductsFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

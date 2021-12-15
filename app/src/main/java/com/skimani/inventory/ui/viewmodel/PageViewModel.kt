@@ -1,4 +1,4 @@
-package com.skimani.inventory.ui.main
+package com.skimani.inventory.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

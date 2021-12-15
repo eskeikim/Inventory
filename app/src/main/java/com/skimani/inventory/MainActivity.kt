@@ -1,16 +1,16 @@
 package com.skimani.inventory
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import com.skimani.inventory.ui.main.SectionsPagerAdapter
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabLayout
 import com.skimani.inventory.databinding.ActivityMainBinding
+import com.skimani.inventory.ui.main.AddProductDialog
+import com.skimani.inventory.ui.main.SectionsPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -29,8 +29,11 @@ class MainActivity : AppCompatActivity() {
         val fab: FloatingActionButton = binding.fab
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            AddProductDialog.newInstance().show(supportFragmentManager, "dialog")
         }
+        binding.createNew.setOnClickListener { view ->
+            AddProductDialog.newInstance().show(supportFragmentManager, "dialog")
+        }
+
     }
 }

@@ -6,4 +6,29 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="_4dp">4dp</dimen>
+    <dimen name="_20sdp">20dp</dimen>
+    <dimen name="_8sdp">8dp</dimen>
+    <dimen name="_5sdp">5dp</dimen>
+    <dimen name="_3sdp">3dp</dimen>
+    <dimen name="_60sdp">60dp</dimen>
+    <dimen name="normal_text_size">@dimen/_10sdp</dimen>
+    <dimen name="slightly_large_text_size">@dimen/_11sdp</dimen>
+    <dimen name="large_text_size">@dimen/_13sdp</dimen>
+    <dimen name="x_large_text_size">@dimen/_16sdp</dimen>
+    <dimen name="small_text_size">@dimen/_8sdp</dimen>
+    <dimen name="extra_small_txt_size">@dimen/_6sdp</dimen>
+    <dimen name="_10sdp">10dp</dimen>
+    <dimen name="_11sdp">11dp</dimen>
+    <dimen name="_13sdp">13dp</dimen>
+    <dimen name="_16sdp">16dp</dimen>
+    <dimen name="_6sdp">6dp</dimen>
+    <dimen name="extra_small_padding">@dimen/_2sdp</dimen>
+    <dimen name="small_padding">@dimen/_4sdp</dimen>
+    <dimen name="medium_padding">@dimen/_8sdp</dimen>
+    <dimen name="large_padding">@dimen/_16sdp</dimen>
+    <dimen name="extra_large_padding">@dimen/_32sdp</dimen>
+    <dimen name="_2sdp">2dp</dimen>
+    <dimen name="_4sdp">4dp</dimen>
+    <dimen name="_32sdp">32dp</dimen>
+
 </resources>
