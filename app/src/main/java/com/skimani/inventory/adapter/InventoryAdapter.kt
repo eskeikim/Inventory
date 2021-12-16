@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.skimani.inventory.data.entities.Products
 import com.skimani.inventory.databinding.ProductsItemListBinding
+import com.skimani.inventory.utils.Util
 
 class InventoryAdapter :
     ListAdapter<Products, InventoryAdapter.ProductsAdapterViewholder>(PRODUCTS_COMPARATOR) {
@@ -28,6 +29,8 @@ class InventoryAdapter :
             binding.tvCode.text = displayCode
             binding.tvManufacturer.text = products.manufacturer
             binding.tvUnits.text = products.cost
+           Util.loadImageFromStorage(products.imagePath, binding.productIv)
+//            binding.productIv.setImageDrawable()
         }
     }
 

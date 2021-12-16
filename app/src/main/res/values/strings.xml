@@ -13,6 +13,7 @@
     <string name="save">Save</string>
     <string name="category">Category</string>
     <string name="vegetables">Vegetables</string>
+    <string name="AlertTitle">Choose image</string>
 
     <string-array name="category">
         <item> Cereal seeds</item>

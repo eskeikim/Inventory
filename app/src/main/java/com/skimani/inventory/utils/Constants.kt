@@ -1,3 +1,9 @@
 package com.skimani.inventory.utils
 
-class Constants
+import java.util.*
+
+class Constants {
+    companion object {
+        val imageName = "${Calendar.getInstance().timeInMillis}.jpg"
+    }
+}
