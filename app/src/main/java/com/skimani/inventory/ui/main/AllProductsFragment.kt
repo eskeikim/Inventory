@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.skimani.inventory.adapter.InventoryAdapter
 import com.skimani.inventory.data.entities.Products
 import com.skimani.inventory.databinding.FragmentMainBinding
-import com.skimani.inventory.ui.viewmodel.PageViewModel
 import com.skimani.inventory.ui.viewmodel.ProductsViewmodel
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -55,6 +53,9 @@ class AllProductsFragment : Fragment() {
         inventoryAdapter.submitList(productList)
     }
 
+    /**
+     * Observer data from viewModel
+     */
     private fun setupObservers() {
         productsViewmodel.allProducts.observe(viewLifecycleOwner, {
             Timber.d("Item count ${it.size}")

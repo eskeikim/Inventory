@@ -39,7 +39,6 @@ class AddProductDialog : CustomRoundedBottomSheet() {
     lateinit var binding: AddProductBinding
     private var selectedItem = ""
     private var imageNamePath = ""
-    val contactId: MutableList<Long> = mutableListOf()
     val CAMERA_CODE = 1
     val GALLERY_CODE = 0
     val READ_STORAGE_PERMISSION = 100
@@ -110,10 +109,15 @@ class AddProductDialog : CustomRoundedBottomSheet() {
                     imagePath
                 )
                 dismiss()
+            } else {
+                Toast.makeText(requireContext(), getString(R.string.fill_all_fields), Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    /**
+     * Allow user to choose image from camera or gallery
+     */
     private fun showChooseDialog() {
         imageNamePath = ""
         val Items = arrayOf<CharSequence>("Camera", "Gallery")
@@ -189,7 +193,6 @@ class AddProductDialog : CustomRoundedBottomSheet() {
                         GalleryIntent.type = "image/*"
                         GalleryIntent.action = Intent.ACTION_GET_CONTENT
                         startActivityForResult(intentGallery, GALLERY_CODE)
-//                        requireActivity().overridePendingTransition(android.R.anim.push_left_right, R.anim.push_right_left)
                     } else {
                         ActivityCompat.requestPermissions(
                             requireActivity(), arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
@@ -202,6 +205,9 @@ class AddProductDialog : CustomRoundedBottomSheet() {
         builder.show()
     }
 
+    /**
+     * init Spinner
+     */
     private fun initSpinner() {
         val categoriesList = resources.getStringArray(com.skimani.inventory.R.array.category)
         val categoryAdapter = ArrayAdapter(
@@ -223,6 +229,9 @@ class AddProductDialog : CustomRoundedBottomSheet() {
             }
     }
 
+    /**
+     * Add the product to room db
+     */
     private fun saveProduct(
         name: String,
         code: String,
@@ -256,6 +265,9 @@ class AddProductDialog : CustomRoundedBottomSheet() {
         }
     }
 
+    /**
+     * Check if all fields are filled correctly
+     */
     private fun validateFields(
         name: String,
         code: String,

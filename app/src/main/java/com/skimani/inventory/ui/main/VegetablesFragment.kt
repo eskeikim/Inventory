@@ -54,6 +54,9 @@ class VegetablesFragment : Fragment() {
         inventoryAdapter.submitList(vegList)
     }
 
+    /**
+     * Observer data from viewModel
+     */
     private fun setupObservers() {
         productsViewmodel.filteredProducts("vegetables").observe(viewLifecycleOwner, {
             Timber.d("Item count ${it.size}")

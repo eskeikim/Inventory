@@ -10,24 +10,23 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.widget.ImageView
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import timber.log.Timber
 import java.io.*
 import java.lang.Exception
 
 class Util {
     companion object {
+        /**
+         * Save an image to memory
+         */
         fun saveToInternalStorage(context: Context, bitmapImage: Bitmap, name: String): String? {
             val cw = ContextWrapper(context.applicationContext)
-            // path to /data/data/yourapp/app_data/imageDir
             val directory: File = cw.getDir("inventoryDir", Context.MODE_PRIVATE)
             Timber.d("Path>>  $name")
-            // Create imageDir
             val mypath = File(directory, name)
             var fos: FileOutputStream? = null
             try {
                 fos = FileOutputStream(mypath)
-                // Use the compress method on the BitMap object to write image to the OutputStream
                 bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos)
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -41,6 +40,9 @@ class Util {
             return directory.absolutePath
         }
 
+        /**
+         * Load an image from memory
+         */
         fun loadImageFromStorage(path: String, view: ImageView) {
             try {
                 val f = File(path)
@@ -50,6 +52,10 @@ class Util {
                 e.printStackTrace()
             }
         }
+
+        /**
+         * Convert a URI to bitmap
+         */
         fun uriToBitmap(context: Context, imageUri: Uri): Bitmap? {
             var bitmap: Bitmap? = null
             val contentResolver: ContentResolver = context.contentResolver

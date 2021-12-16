@@ -48,14 +48,20 @@ class CerealsFragment : Fragment() {
         initAdapter()
     }
 
+    /**
+     * Setup adapter
+     */
     private fun initAdapter() {
         inventoryAdapter = InventoryAdapter()
         binding.productsRV.adapter = inventoryAdapter
         inventoryAdapter.submitList(vegList)
     }
 
+    /**
+     * Observer data from viewModel
+     */
     private fun setupObservers() {
-        productsViewmodel.filteredProducts("cereals").observe(viewLifecycleOwner, {
+        productsViewmodel.filteredProducts("Cereal seeds").observe(viewLifecycleOwner, {
             Timber.d("Item count ${it.size}")
             if (it != null) {
                 vegList.clear()
