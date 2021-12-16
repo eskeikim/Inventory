@@ -10,6 +10,7 @@ import com.skimani.inventory.adapter.InventoryAdapter
 import com.skimani.inventory.data.entities.Products
 import com.skimani.inventory.databinding.FragmentMainBinding
 import com.skimani.inventory.ui.viewmodel.ProductsViewmodel
+import com.skimani.inventory.utils.Util
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -21,7 +22,7 @@ class EquipmentsFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private lateinit var inventoryAdapter: InventoryAdapter
-    private val vegList = ArrayList<Products>()
+    private val productList = ArrayList<Products>()
     private val productsViewmodel: ProductsViewmodel by viewModels()
 
     // This property is only valid between onCreateView and
@@ -51,7 +52,7 @@ class EquipmentsFragment : Fragment() {
     private fun initAdapter() {
         inventoryAdapter = InventoryAdapter()
         binding.productsRV.adapter = inventoryAdapter
-        inventoryAdapter.submitList(vegList)
+        inventoryAdapter.submitList(productList)
     }
 
     /**
@@ -61,9 +62,14 @@ class EquipmentsFragment : Fragment() {
         productsViewmodel.filteredProducts("equipments").observe(viewLifecycleOwner, {
             Timber.d("Item count ${it.size}")
             if (it != null) {
-                vegList.clear()
-                vegList.addAll(it.toMutableList())
-                inventoryAdapter.notifyDataSetChanged()
+                if (it.isNotEmpty()) {
+                    Util.showEmptyState(false, binding.layoutNoSearchResult, binding.productsRV)
+                    productList.clear()
+                    productList.addAll(it.toMutableList())
+                    inventoryAdapter.notifyDataSetChanged()
+                } else {
+                    Util.showEmptyState(true, binding.layoutNoSearchResult, binding.productsRV)
+                }
             }
         })
     }

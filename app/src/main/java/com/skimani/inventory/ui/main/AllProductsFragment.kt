@@ -10,6 +10,8 @@ import com.skimani.inventory.adapter.InventoryAdapter
 import com.skimani.inventory.data.entities.Products
 import com.skimani.inventory.databinding.FragmentMainBinding
 import com.skimani.inventory.ui.viewmodel.ProductsViewmodel
+import com.skimani.inventory.utils.Util
+import com.skimani.inventory.utils.Util.Companion.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -30,6 +32,7 @@ class AllProductsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        hideKeyboard()
     }
 
     override fun onCreateView(
@@ -60,9 +63,14 @@ class AllProductsFragment : Fragment() {
         productsViewmodel.allProducts.observe(viewLifecycleOwner, {
             Timber.d("Item count ${it.size}")
             if (it != null) {
-                productList.clear()
-                productList.addAll(it.toMutableList())
-                inventoryAdapter.notifyDataSetChanged()
+                if (it.isNotEmpty()) {
+                    Util.showEmptyState(false, binding.layoutNoSearchResult, binding.productsRV)
+                    productList.clear()
+                    productList.addAll(it.toMutableList())
+                    inventoryAdapter.notifyDataSetChanged()
+                } else {
+                    Util.showEmptyState(true, binding.layoutNoSearchResult, binding.productsRV)
+                }
             }
         })
     }

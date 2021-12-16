@@ -32,6 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/iv_no_results"
             android:layout_centerHorizontal="true"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_13sdp"
             android:layout_marginLeft="@dimen/extra_large_padding"
             android:layout_marginTop="@dimen/_16sdp"
             android:layout_marginRight="@dimen/extra_large_padding"

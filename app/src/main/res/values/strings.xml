@@ -15,7 +15,7 @@
     <string name="vegetables">Vegetables</string>
     <string name="AlertTitle">Choose image</string>
     <string name="fill_all_fields">Fill all the fields</string>
-    <string name="empty_products">No products found</string>
+    <string name="empty_products">You do not have any product. \n add a product</string>
 
     <string-array name="category">
         <item> Cereal seeds</item>

@@ -29,8 +29,7 @@ class InventoryAdapter :
             binding.tvCode.text = displayCode
             binding.tvManufacturer.text = products.manufacturer
             binding.tvUnits.text = products.cost
-           Util.loadImageFromStorage(products.imagePath, binding.productIv)
-//            binding.productIv.setImageDrawable()
+            if (products.imagePath.isNotEmpty()) Util.loadImageFromStorage(products.imagePath, binding.productIv)
         }
     }
 

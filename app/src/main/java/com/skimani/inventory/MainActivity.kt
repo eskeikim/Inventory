@@ -3,9 +3,7 @@ package com.skimani.inventory
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
@@ -13,6 +11,7 @@ import com.skimani.inventory.adapter.SectionsPagerAdapter
 import com.skimani.inventory.databinding.ActivityMainBinding
 import com.skimani.inventory.ui.main.AddProductDialog
 import com.skimani.inventory.ui.viewmodel.ProductsViewmodel
+import com.skimani.inventory.utils.Util.Companion.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.util.*
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        hideKeyboard()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -48,7 +47,6 @@ class MainActivity : AppCompatActivity() {
     private fun initSearchView() {
         binding.searchView.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -61,7 +59,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-
             }
         })
     }

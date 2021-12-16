@@ -1,5 +1,6 @@
 package com.skimani.inventory.utils
 
+import android.app.Activity
 import android.content.ContentResolver
 import android.content.Context
 import android.content.ContextWrapper
@@ -9,7 +10,18 @@ import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import android.widget.RelativeLayout
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.skimani.inventory.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.io.*
 import java.lang.Exception
@@ -44,12 +56,31 @@ class Util {
          * Load an image from memory
          */
         fun loadImageFromStorage(path: String, view: ImageView) {
-            try {
-                val f = File(path)
-                val b = BitmapFactory.decodeStream(FileInputStream(f))
-                view.setImageBitmap(b)
-            } catch (e: FileNotFoundException) {
-                e.printStackTrace()
+            GlobalScope.launch(Dispatchers.IO) {
+                try {
+                    val f = File(path)
+                    val b = BitmapFactory.decodeStream(FileInputStream(f)) //
+                    loadResourceImage(view, b)
+                } catch (e: FileNotFoundException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        private fun bitmapToByte(bitmap: Bitmap): ByteArray? {
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            return stream.toByteArray()
+        }
+        fun loadResourceImage(imageView: ImageView, bitmap: Bitmap) {
+            GlobalScope.launch(Dispatchers.Main) {
+                Glide.with(imageView.context)
+                    .load(bitmapToByte(bitmap))
+                    .fitCenter()
+                    .apply(
+                        RequestOptions().placeholder(R.drawable.ic_baseline_sync_24)
+                            .error(R.drawable.ic_baseline_image_24)
+                    )
+                    .into(imageView)
             }
         }
 
@@ -71,6 +102,36 @@ class Util {
                 e.printStackTrace()
             }
             return bitmap
+        }
+
+        /**
+         * Hide and show empty products state
+         */
+        fun showEmptyState(
+            show: Boolean,
+            layoutNoSearchResult: RelativeLayout,
+            productsRV: RecyclerView
+        ) {
+            if (show) {
+                layoutNoSearchResult.visibility = View.VISIBLE
+                productsRV.visibility = View.GONE
+            } else {
+                layoutNoSearchResult.visibility = View.GONE
+                productsRV.visibility = View.VISIBLE
+            }
+        }
+
+        fun Fragment.hideKeyboard() {
+            view?.let { activity?.hideKeyboard(it) }
+        }
+
+        fun Activity.hideKeyboard() {
+            hideKeyboard(currentFocus ?: View(this))
+        }
+
+        fun Context.hideKeyboard(view: View) {
+            val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
 }

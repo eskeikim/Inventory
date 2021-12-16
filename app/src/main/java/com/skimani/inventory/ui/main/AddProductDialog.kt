@@ -163,7 +163,6 @@ class AddProductDialog : CustomRoundedBottomSheet() {
                                 CAMERA_PERMISSION
                             )
                         } else {
-
                             val CameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                             if (CameraIntent.resolveActivity(requireContext().packageManager) != null) {
                                 startActivityForResult(CameraIntent, CAMERA_CODE)
@@ -176,13 +175,6 @@ class AddProductDialog : CustomRoundedBottomSheet() {
                         }
                     }
                 } else if (Items[i] == "Gallery") {
-                    var GalleryIntent: Intent? = null
-                    GalleryIntent =
-                        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                    GalleryIntent.type = "image/*"
-                    GalleryIntent.action = Intent.ACTION_GET_CONTENT
-                    startActivityForResult(GalleryIntent, GALLERY_CODE)
-
                     if (ActivityCompat.checkSelfPermission(
                             requireContext(),
                             Manifest.permission.READ_EXTERNAL_STORAGE
@@ -190,8 +182,8 @@ class AddProductDialog : CustomRoundedBottomSheet() {
                     ) {
                         val intentGallery =
                             Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                        GalleryIntent.type = "image/*"
-                        GalleryIntent.action = Intent.ACTION_GET_CONTENT
+                        intentGallery.type = "image/*"
+                        intentGallery.action = Intent.ACTION_GET_CONTENT
                         startActivityForResult(intentGallery, GALLERY_CODE)
                     } else {
                         ActivityCompat.requestPermissions(
